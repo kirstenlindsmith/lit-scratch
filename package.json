@@ -1,14 +1,9 @@
 {
-  "name": "static",
+  "name": "my-static-page",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "watch": "npx webpack --watch --entry ./main.js -o ./bundle.js --mode production",
-    "start": ""
+    "watch": "npx webpack --watch --entry ./main.js -o ./bundle.js --mode production"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "lit-html": "^1.1.2",
     "pure-store": "^0.3.6"
