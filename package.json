@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "npx webpack --watch --entry ./main.js -o ./bundle.js --mode production"
+    "watch": "npx webpack --watch --entry ./main.js -o ./bundle.js --mode production",
+    "start": ""
   },
   "author": "",
   "license": "ISC",
