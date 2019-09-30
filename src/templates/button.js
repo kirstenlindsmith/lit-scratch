@@ -3,9 +3,10 @@ import store from '../store'
 
 const clickHandler = {
   handleEvent(e) {
-    store.update(() => ({ message: new Date().getTime() }))
-  },
-  capture: true,
+    store.update({
+      message: new Date().getTime()
+    })
+  }
 };
 
 export default html`

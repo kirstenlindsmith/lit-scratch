@@ -3,7 +3,7 @@ import template from './templates'
 import store from './store'
 
 const renderApp = () => {
-  render(template(), document.body)
+  render(template(store), document.body)
 }
 
 store.subscribe(renderApp)

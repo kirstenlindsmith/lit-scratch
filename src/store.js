@@ -1,5 +1,3 @@
-import createStore from 'pure-store'
-
 const defaultState = {
   message: 'first thing'
 }
@@ -12,17 +10,44 @@ const logger = (options) => (prevState, nextState) => {
   console.groupEnd()
 }
 
-const store = createStore(defaultState)
 const middlewares = [logger({ collapsed: true })]
 
-store._update = store.update
+function isFunction(functionToCheck) {
+  return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+}
 
-store.update = ((args) => {
-  let prevState = store.state
-  store._update(args)
-  middlewares.forEach(middleware => {
-    middleware(prevState, store.state)
-  })
-}).bind(store)
+class Store {
+
+  constructor(initialState, middlewares = []) {
+    this._state = initialState
+    this._middlewares = middlewares
+    this._subscribers = []
+  }
+
+  update(updater) {
+    const prevState = JSON.parse(JSON.stringify(this._state))
+    if (isFunction(updater)) {
+      this._state = updater(prevState)
+    } else if (typeof updater === 'object') {
+      this._state = { ...this._state, ...updater }
+    } else {
+      throw `Store.update() expected ${updater} to be an object or function`
+    }
+    this._middlewares.forEach(middleware => {
+      middleware(prevState, this._state)
+    })
+    this._subscribers.forEach(subscriber => subscriber())
+  }
+
+  get state() {
+    return this._state
+  }
+
+  subscribe(newSubscriber) {
+    this._subscribers = [...this._subscribers, newSubscriber ]
+  }
+}
+
+const store = new Store(defaultState, middlewares)
 
 export default store

@@ -1,8 +1,15 @@
-const static = require('node-static');
-const file = new static.Server('./public');
+const express = require('express')
+const app = express()
+const path = require('path')
+const PORT = process.env.PORT || 3000
 
-require('http').createServer(function (request, response) {
-  request.addListener('end', function () {
-    file.serve(request, response);
-  }).resume();
-}).listen(process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, './public')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+})
+
+app.listen(PORT, () => {
+  console.log('***************************')
+  console.log(`Listening on Port: ${PORT}`);
+})
