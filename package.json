@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "watch": "npx webpack --watch --entry ./main.js -o ./bundle.js --mode production"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

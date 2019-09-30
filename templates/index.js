@@ -4,9 +4,9 @@ import store from '../store'
 
 const mainTemplate = (store) => () => html`
   <div>
+    ${button}
+    ${button}
     ${store.state.message}
-    ${button}
-    ${button}
   </div>
 `
 

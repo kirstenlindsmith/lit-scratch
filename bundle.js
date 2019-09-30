@@ -107,11 +107,11 @@ const w=e=>null===e||!("object"==typeof e||"function"==typeof e),x=e=>Array.isAr
  * http://polymer.github.io/PATENTS.txt
  */
 (window.litHtmlVersions||(window.litHtmlVersions=[])).push("1.1.2");const D=(e,...t)=>new _(e,t,"html",S);var L=r(0);var C=new(function(){function e(t,r,n){var i=this;this.callbacks=[],this.getState=function(){return i.getter(i.root.rootState)},this.update=function(e){var t=e instanceof Function?e:function(t){return Object.assign(t,e)};i.root.rootState=Object(L.a)(i.root.rootState,(function(e){t(i.getter(e))})),i.root.callbacks.forEach((function(e){return e()}))},this.storeFor=function(t){return new e(i,t)},this.updaterFor=function(e){return i.storeFor(e).update},this.subscribe=function(e){if(i.root!=i)throw"Only the top level store can be subscribed to.";return i.callbacks.push(e),function(){return i.callbacks.splice(i.callbacks.indexOf(e),1)}},this.parent=t,this.root=t&&t.root||this,t||(this.rootState=n),this.getter=function(e){return r(t?t.getter(e):e)}}return Object.defineProperty(e.prototype,"state",{get:function(){return this.getState()},enumerable:!0,configurable:!0}),e}())(null,(function(e){return e}),{message:"first thing"});var I=D`
-  <button @click=${{handleEvent(e){C.update(e=>{console.log(e.message),e.message=`new thing ${Math.random()}`})},capture:!0}}></button>
+  <button @click=${{handleEvent(e){C.update(e=>{e.message=`new thing ${Math.random()}`})},capture:!0}}></button>
 `;var $=(e=>()=>D`
   <div>
+    ${I}
+    ${I}
     ${e.state.message}
-    ${I}
-    ${I}
   </div>
 `)(C);const R=()=>{((e,t,r)=>{let n=M.get(t);void 0===n&&(s(t,t.firstChild),M.set(t,n=new A(Object.assign({templateFactory:V},r))),n.appendInto(t)),n.setValue(e),n.commit()})($(),document.body)};C.subscribe(R),R()}]);
