@@ -3,9 +3,7 @@ import store from '../store'
 
 const clickHandler = {
   handleEvent(e) {
-    store.update(state => {
-      state.message = `new thing ${Math.random()}`
-    })
+    store.update(() => ({ message: new Date().getTime() }))
   },
   capture: true,
 };
