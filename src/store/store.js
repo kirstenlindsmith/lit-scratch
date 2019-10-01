@@ -1,21 +1,9 @@
-const defaultState = {
-  message: 'first thing'
-}
-
-const logger = (options) => (prevState, nextState) => {
-  if (options.collapsed) console.groupCollapsed('state change')
-  else console.group('state change')
-  console.log('prev state: ', prevState)
-  console.log('next state: ', nextState)
-  console.groupEnd()
-}
-
-const middlewares = [logger({ collapsed: true })]
-
+// for checking if updater is a function in the update() method of our store class
 function isFunction(functionToCheck) {
   return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
 
+// simple store class
 class Store {
 
   constructor(initialState, middlewares = []) {
@@ -48,6 +36,4 @@ class Store {
   }
 }
 
-const store = new Store(defaultState, middlewares)
-
-export default store
+export default Store

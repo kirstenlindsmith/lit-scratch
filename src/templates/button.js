@@ -1,5 +1,5 @@
 import { html } from 'lit-html'
-import store from '../store'
+import store from '../store/index'
 
 const clickHandler = {
   handleEvent(e) {

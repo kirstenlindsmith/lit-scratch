@@ -1,6 +1,6 @@
 import { html } from 'lit-html'
 import button from './button'
-import store from '../store'
+import store from '../store/index'
 
 const mainTemplate = (store) => () => html`
   <div>
