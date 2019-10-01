@@ -1,5 +1,5 @@
 import { render } from 'lit-html'
-import template from './templates'
+import template from './templates/index'
 import store from './store/index'
 
 const renderApp = () => {
