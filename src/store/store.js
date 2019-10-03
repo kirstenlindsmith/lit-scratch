@@ -8,7 +8,7 @@ class Store {
 
   constructor(initialState, middlewares = []) {
     this._state = initialState
-    this._middlewares = middlewares
+    this._middlewares = middlewares.map(middleware => middleware(this))
     this._subscribers = []
   }
 
@@ -21,9 +21,7 @@ class Store {
     } else {
       throw `Store.update() expected ${updater} to be an object or function`
     }
-    this._middlewares.forEach(middleware => {
-      middleware(prevState, this._state)
-    })
+    this._middlewares.forEach(middleware => middleware(prevState, this._state))
     this._subscribers.forEach(subscriber => subscriber())
   }
 
