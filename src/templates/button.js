@@ -9,6 +9,6 @@ const clickHandler = {
   }
 };
 
-export default html`
-  <button @click=${clickHandler}></button>
+export default (className) => html`
+  <button class="${className}" @click=${clickHandler}></button>
 `

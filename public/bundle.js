@@ -66,7 +66,7 @@ const y=t=>null===t||!("object"==typeof t||"function"==typeof t),N=t=>Array.isAr
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
- */const j=new class{handleAttributeExpressions(t,e,s,n){const i=e[0];if("."===i){return new T(t,e.slice(1),s).parts}return"@"===i?[new M(t,e.slice(1),n.eventContext)]:"?"===i?[new S(t,e.slice(1),s)]:new w(t,e,s).parts}handleTextExpression(t){return new E(t)}};
+ */const $=new class{handleAttributeExpressions(t,e,s,n){const i=e[0];if("."===i){return new T(t,e.slice(1),s).parts}return"@"===i?[new M(t,e.slice(1),n.eventContext)]:"?"===i?[new S(t,e.slice(1),s)]:new w(t,e,s).parts}handleTextExpression(t){return new E(t)}};
 /**
  * @license
  * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
@@ -79,20 +79,7 @@ const y=t=>null===t||!("object"==typeof t||"function"==typeof t),N=t=>Array.isAr
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
- */function $(t){let e=C.get(t.type);void 0===e&&(e={stringsArray:new WeakMap,keyString:new Map},C.set(t.type,e));let s=e.stringsArray.get(t.strings);if(void 0!==s)return s;const n=t.strings.join(c);return void 0===(s=e.keyString.get(n))&&(s=new p(t,t.getTemplateElement()),e.keyString.set(n,s)),e.stringsArray.set(t.strings,s),s}const C=new Map,k=new WeakMap;
-/**
- * @license
- * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at
- * http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at
- * http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at
- * http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at
- * http://polymer.github.io/PATENTS.txt
- */
+ */function j(t){let e=C.get(t.type);void 0===e&&(e={stringsArray:new WeakMap,keyString:new Map},C.set(t.type,e));let s=e.stringsArray.get(t.strings);if(void 0!==s)return s;const n=t.strings.join(c);return void 0===(s=e.keyString.get(n))&&(s=new p(t,t.getTemplateElement()),e.keyString.set(n,s)),e.stringsArray.set(t.strings,s),s}const C=new Map,k=new WeakMap;
 /**
  * @license
  * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
@@ -106,12 +93,25 @@ const y=t=>null===t||!("object"==typeof t||"function"==typeof t),N=t=>Array.isAr
  * subject to an additional IP rights grant found at
  * http://polymer.github.io/PATENTS.txt
  */
-(window.litHtmlVersions||(window.litHtmlVersions=[])).push("1.1.2");const L=(t,...e)=>new b(t,e,"html",j);var I=new class{constructor(t,e=[]){this._state=t,this._middlewares=e.map(t=>t(this)),this._subscribers=[]}update(t){const e=JSON.parse(JSON.stringify(this._state));if((s=t)&&"[object Function]"==={}.toString.call(s))this._state=t(e);else{if("object"!=typeof t)throw`Store.update() expected ${t} to be an object or function`;this._state={...this._state,...t}}var s;this._middlewares.forEach(t=>t(e,this._state)),this._subscribers.forEach(t=>t())}get state(){return this._state}subscribe(t){this._subscribers=[...this._subscribers,t]}}({message:"first thing"},[(t=>e=>(e,s)=>{t.collapsed?console.groupCollapsed("state change"):console.group("state change"),console.log("prev state: ",e),console.log("next state: ",s),console.groupEnd()})({collapsed:!0}),(t=>t=>{const e=window.localStorage.getItem("state");return e&&(t._state=JSON.parse(e)),(t,e)=>{window.localStorage.setItem("state",JSON.stringify(e))}})()]);var H=L`
-  <button @click=${{handleEvent(t){I.update({message:(new Date).getTime()})}}}></button>
-`;var F=(t=>()=>L`
+/**
+ * @license
+ * Copyright (c) 2017 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at
+ * http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at
+ * http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at
+ * http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at
+ * http://polymer.github.io/PATENTS.txt
+ */
+(window.litHtmlVersions||(window.litHtmlVersions=[])).push("1.1.2");const L=(t,...e)=>new b(t,e,"html",$);var I=new class{constructor(t,e=[]){this._state=t,this._middlewares=e.map(t=>t(this)),this._subscribers=[]}update(t){const e=JSON.parse(JSON.stringify(this._state));if((s=t)&&"[object Function]"==={}.toString.call(s))this._state=t(e);else{if("object"!=typeof t)throw`Store.update() expected ${t} to be an object or function`;this._state={...this._state,...t}}var s;this._middlewares.forEach(t=>t(e,this._state)),this._subscribers.forEach(t=>t())}get state(){return this._state}subscribe(t){this._subscribers=[...this._subscribers,t]}}({message:"first thing"},[(t=>e=>(e,s)=>{t.collapsed?console.groupCollapsed("state change"):console.group("state change"),console.log("prev state: ",e),console.log("next state: ",s),console.groupEnd()})({collapsed:!0}),(t=>t=>{const e=window.localStorage.getItem("state");return e&&(t._state=JSON.parse(e)),(t,e)=>{window.localStorage.setItem("state",JSON.stringify(e))}})()]);const H={handleEvent(t){I.update({message:(new Date).getTime()})}};var F=t=>L`
+  <button class="${t}" @click=${H}></button>
+`;var W=(t=>()=>L`
   <div>
-    ${H}
-    ${H}
+    ${F("red")}
+    ${F("")}
     ${t.state.message}
   </div>
-`)(I);const W=()=>{((t,e,s)=>{let n=k.get(e);void 0===n&&(r(e,e.firstChild),k.set(e,n=new E(Object.assign({templateFactory:$},s))),n.appendInto(e)),n.setValue(t),n.commit()})(F(I),document.body)};I.subscribe(W),W()}]);
+`)(I);const B=()=>{((t,e,s)=>{let n=k.get(e);void 0===n&&(r(e,e.firstChild),k.set(e,n=new E(Object.assign({templateFactory:j},s))),n.appendInto(e)),n.setValue(t),n.commit()})(W(I),document.body)};I.subscribe(B),B()}]);

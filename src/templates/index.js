@@ -4,8 +4,8 @@ import store from '../store/index'
 
 const mainTemplate = (store) => () => html`
   <div>
-    ${button}
-    ${button}
+    ${button('red')}
+    ${button('')}
     ${store.state.message}
   </div>
 `
