@@ -13,9 +13,10 @@ class Store {
   }
 
   update(updater) {
-    const prevState = JSON.parse(JSON.stringify(this._state))
+    const stringState = JSON.stringify(this._state)
+    const prevState = JSON.parse(stringState)
     if (isFunction(updater)) {
-      this._state = updater(prevState)
+      this._state = updater(JSON.parse(stringState))
     } else if (typeof updater === 'object') {
       this._state = { ...this._state, ...updater }
     } else {
@@ -30,7 +31,7 @@ class Store {
   }
 
   subscribe(newSubscriber) {
-    this._subscribers = [...this._subscribers, newSubscriber ]
+    this._subscribers = [ ...this._subscribers, newSubscriber ]
   }
 }
 
